@@ -2,6 +2,7 @@ import React from 'react'
 import qs from 'query-string'
 import { useQuery } from 'react-query'
 import { useHistory, useLocation } from 'react-router-dom'
+import constants from './constants'
 
 const LIMIT_OPTIONS = [
   { label: 10, value: 10 },
@@ -11,7 +12,7 @@ const LIMIT_OPTIONS = [
 
 const fetchArtists = async ({ queryKey }) => {
   const [_, options] = queryKey
-  const url = `${import.meta.env.VITE_API_URL}/?${qs.stringify(options)}`
+  const url = `${constants.API_URL}/?${qs.stringify(options)}`
   const res = await fetch(url)
   return await res.json()
 }

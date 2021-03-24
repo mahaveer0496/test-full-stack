@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useMutation } from 'react-query'
 import { useHistory } from 'react-router-dom'
+import constants from './constants'
 
 const CreateArtist = () => {
   const history = useHistory()
@@ -8,7 +9,7 @@ const CreateArtist = () => {
 
   const createArtistMutation = useMutation(
     name => {
-        return fetch(import.meta.env.VITE_API_URL, {
+        return fetch(constants.API_URL, {
           headers:{
             'content-type': 'application/json'
           },
