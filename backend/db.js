@@ -8,4 +8,10 @@ const db = new Pool({
   port: 5432,
 })
 
+db.on('error', ()=>{
+  console.error('Could not connect to DB')
+  process.exit(-1)
+})
+
+
 module.exports = db
