@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  deploy:    
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,11 +21,6 @@ jobs:
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
             cd ~/test-full-stack
-            git pull origin master           
-                      
-            cd backend
-            yarn start
-            cd ../frontend
-            export VITE_API_URL=http://143.110.243.76:3000
-            yarn start
-            
+            git pull origin master
+            export VITE_API_URL=http://143.110.243.76:3000            
+            pm2 restart all
