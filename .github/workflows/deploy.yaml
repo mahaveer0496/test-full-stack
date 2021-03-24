@@ -20,7 +20,11 @@ jobs:
           script: |
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
-            cd ~/test-full-stack
+            cd ~/test-full-stack            
             git pull origin master
+
+            cd frontend
             export VITE_API_URL=http://143.110.243.76:3000            
+            yarn build
+            
             pm2 restart all
