@@ -11,7 +11,7 @@ const LIMIT_OPTIONS = [
 
 const fetchArtists = async ({ queryKey }) => {
   const [_, options] = queryKey
-  const url = `http://localhost:3000/?${qs.stringify(options)}`
+  const url = `${import.meta.env.VITE_API_URL}/?${qs.stringify(options)}`
   const res = await fetch(url)
   return await res.json()
 }
@@ -45,7 +45,7 @@ function ViewArtists() {
 
   return (
     <div>
-      <div className='flex space-x-6 py-4'>
+      <div className='flex py-4 space-x-6'>
         <div>
           Limit:
           <select onChange={handleLimitChange} value={limit}>
@@ -70,14 +70,14 @@ function ViewArtists() {
           </select>
         </div>
       </div>
-      <div className='bg-white shadow-md rounded my-6'>
-        <table className='text-left w-full border-collapse'>
+      <div className='my-6 bg-white rounded shadow-md'>
+        <table className='w-full text-left border-collapse'>
           <thead>
             <tr>
-              <th className='py-4 px-6 bg-gray-100 font-bold uppercase text-sm text-gray-500 border-b border-gray-200'>
+              <th className='px-6 py-4 text-sm font-bold text-gray-500 uppercase bg-gray-100 border-b border-gray-200'>
                 ID
               </th>
-              <th className='py-4 px-6 bg-gray-100 font-bold uppercase text-sm text-gray-500 border-b border-gray-200'>
+              <th className='px-6 py-4 text-sm font-bold text-gray-500 uppercase bg-gray-100 border-b border-gray-200'>
                 Name
               </th>
             </tr>
@@ -85,10 +85,10 @@ function ViewArtists() {
           <tbody>
             {data.data.map((datum) => (
               <tr key={datum.ArtistId} className='hover:bg-gray-100'>
-                <td className='py-4 px-6 border-b border-gray-200'>
+                <td className='px-6 py-4 border-b border-gray-200'>
                   {datum.ArtistId}
                 </td>
-                <td className='py-4 px-6 border-b border-gray-200'>
+                <td className='px-6 py-4 border-b border-gray-200'>
                   {datum.Name}
                 </td>
               </tr>

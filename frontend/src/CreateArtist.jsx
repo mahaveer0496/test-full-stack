@@ -8,7 +8,7 @@ const CreateArtist = () => {
 
   const createArtistMutation = useMutation(
     name => {
-        return fetch('http://localhost:3000/', {
+        return fetch(import.meta.env.VITE_API_URL, {
           headers:{
             'content-type': 'application/json'
           },
