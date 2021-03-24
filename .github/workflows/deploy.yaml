@@ -20,10 +20,12 @@ jobs:
           script: |
             cd ~/test-full-stack
             git pull origin master
-            npm i -g yarn
-            cd backend
-            yarn start
-            cd ../frontend
-            export VITE_API_URL=http://143.110.243.76:3000
-            yarn start
+            node -v
+            pwd
+            # npm i -g yarn            
+            # cd backend
+            # yarn start
+            # cd ../frontend
+            # export VITE_API_URL=http://143.110.243.76:3000
+            # yarn start
             
