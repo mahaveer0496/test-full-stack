@@ -1,0 +1,28 @@
+name: My Github Action
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:    
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: SSH and deploy node app
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 42
+          script: |
+            cd ~/test-full-stack
+            git pull origin master
+            cd backend
+            yarn start
+            cd ../frontend
+            export VITE_API_URL=http://143.110.243.76:3000
+            yarn start
+            
